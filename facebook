@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:src="@drawable/fb"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome to Facebook"
+        android:gravity="center"
+        android:layout_marginTop="5dp" />
+
+    <EditText
+        android:id="@+id/fb_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Phone or email"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/fb_pass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/fb_loginbtn"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text="Log In"
+        android:textAllCaps="false"
+        android:backgroundTint="#3F51B5" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forgot Password?"
+        android:textStyle="bold"
+        android:textColor="#3F51B5"
+        android:textSize="17sp"
+        android:layout_gravity="center" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Create New"
+        android:textAllCaps="false"
+        android:backgroundTint="#4CAF50" />
+
+</LinearLayout>
+
+
+package com.example.facebook;
+
+import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+}
