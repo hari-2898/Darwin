@@ -1,0 +1,105 @@
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Apps"
+        android:layout_marginTop="30dp"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:columnCount="3"
+        android:orientation="horizontal"
+        android:rowCount="3">
+
+        <ImageView
+            android:id="@+id/wifi_btn"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="13dp"
+            android:src="@drawable/baseline_wifi_24"
+            android:contentDescription="WiFi" />
+
+        <ImageView
+            android:id="@+id/bluetooth_btn"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="13dp"
+            android:src="@drawable/baseline_bluetooth_24"
+            android:contentDescription="Bluetooth" />
+
+        <ImageView
+            android:id="@+id/volume_btn"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:padding="13dp"
+            android:src="@drawable/baseline_volume_up_24"
+            android:contentDescription="Volume" />
+
+    </GridLayout>
+
+</LinearLayout>
+
+
+package com.example.gridviewdr;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import android.content.DialogInterface;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    ImageView wifi_btn, bluetooth_btn, volume_btn;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        wifi_btn = findViewById(R.id.wifi_btn);
+        bluetooth_btn = findViewById(R.id.bluetooth_btn);
+        volume_btn = findViewById(R.id.volume_btn);
+
+        wifi_btn.setOnClickListener(v -> myAlertBox("WiFi Option"));
+        bluetooth_btn.setOnClickListener(v -> myAlertBox("Bluetooth Option"));
+        volume_btn.setOnClickListener(v -> myAlertBox("Volume Option"));
+    }
+
+    public void myAlertBox(String option) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+
+        builder.setTitle("Alert!");
+        builder.setMessage("Click Yes to select " + option);
+        builder.setCancelable(false);
+
+        builder.setPositiveButton("Yes", (dialog, which) ->
+                Toast.makeText(MainActivity.this,
+                        option + " successfully selected",
+                        Toast.LENGTH_SHORT).show());
+
+        builder.setNegativeButton("No", (dialog, which) ->
+                dialog.cancel());
+
+        builder.create().show();
+    }
+}
+
+
+
